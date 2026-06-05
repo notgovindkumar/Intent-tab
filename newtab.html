@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intent Tab</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+  </head>
+  <body>
+
+    <div class="gemini-ambient-glow-container">
+        <div class="glow-pod pod-blue"></div>
+        <div class="glow-pod pod-indigo"></div>
+        <div class="glow-pod pod-cyan"></div>
+    </div>
+    
+    <div class="app-container">
+      <header class="brand-header">
+        <img src="assets/logo.png" alt="Intent Tab logo" class="brand-logo" />
+        <span>Intent Tab</span>
+      </header>
+
+      <main class="focus-hub">
+        <h1 id="greeting-header" class="hero-text">Hi Yash, what is your focus for this session?</h1>
+        <div class="hero-spacer" aria-hidden="true"></div>
+
+        <div class="interactive-capsule-wrapper">
+          <form id="intent-form" class="capsule-form">
+            <div class="input-line intent-line">
+              <input
+                type="text"
+                id="intent-input"
+                placeholder="What intent are we tracking?"
+                autocomplete="off"
+                autofocus
+              />
+              <button id="submit-intent-btn" type="submit" class="send-action-btn" aria-label="Submit intent">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 10.5L21 3L14.5 21L10.5 14.5L3 10.5Z" fill="currentColor" opacity="0.16" />
+                  <path d="M3 10.5L21 3L14.5 21L10.5 14.5L3 10.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="input-line category-line hidden">
+              <input
+                type="text"
+                id="category-input"
+                placeholder="Assign a category (e.g., Study, Dev, Market)..."
+                autocomplete="off"
+              />
+            </div>
+          </form>
+        </div>
+      </main>
+
+      <section id="session-card" class="session-card hidden">
+        <div class="session-header">
+          <span class="session-badge" id="session-category"></span>
+          <span class="session-status">Active</span>
+        </div>
+        <h2 id="session-intent" class="session-title"></h2>
+        <p class="session-meta">Started <span id="session-start"></span></p>
+        <p class="session-timer"><strong id="session-timer">00:00:00</strong></p>
+        <button id="stop-button" type="button" class="secondary-button">End Session</button>
+      </section>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/focus.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/tracker.js"></script>
+    <script src="js/newtab.js"></script>
+  </body>
+</html>

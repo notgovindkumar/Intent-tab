@@ -1,0 +1,32 @@
+.input-line {
+  transition: opacity 240ms ease, transform 240ms ease, max-height 240ms ease, visibility 240ms ease;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 160px;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@keyframes floatAmbient {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(3%, 5%) scale(1.05);
+  }
+  100% {
+    transform: translate(-2%, -3%) scale(0.95);
+  }
+}

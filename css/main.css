@@ -1,0 +1,302 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* FIX 1: Exact matte premium dark void used by Google to make colors pop */
+  background: #080808; 
+  color: #f8fafc;
+}
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #080808;
+}
+
+/* FIX 2: Expanded, ultra-wide viewport layout engine */
+.gemini-ambient-glow-container {
+  position: fixed; 
+  top: 42%; /* Positions the epicenter right behind the input box */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  max-width: 1600px; /* Vast horizontal reach matching image_b78ae4.png */
+  height: 600px;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+  /* Heavy blur creates the natural light-bleed signature */
+  filter: blur(140px); 
+  opacity: 0.38; /* Cranked up saturation threshold */
+}
+
+/* Base style for each light source */
+.glow-pod {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen; 
+  animation: floatAmbient 16s ease-in-out infinite alternate;
+}
+
+/* FIX 3: Authentic Gemini Saturated Hex Codes and massive scale */
+
+/* Deep Royal Blue Core Wing */
+.pod-blue {
+  top: 25%;
+  left: 10%;
+  width: 750px;
+  height: 280px;
+  background: radial-gradient(circle at center, #185abc 0%, rgba(24, 90, 188, 0) 70%);
+}
+
+/* Saturated Electric Indigo Center (The heavy lifting color anchor) */
+.pod-indigo {
+  top: 20%;
+  left: 25%;
+  width: 900px;
+  height: 320px;
+  background: radial-gradient(circle at center, #1a73e8 0%, rgba(26, 115, 232, 0) 75%);
+  animation-delay: -4s;
+  animation-duration: 22s;
+}
+
+/* Crisp Cyan Highlight (Breaks up the desaturation by adding edge clarity) */
+.pod-cyan {
+  top: 35%;
+  left: 30%;
+  width: 550px;
+  height: 200px;
+  background: radial-gradient(circle at center, #4285f4 0%, rgba(66, 133, 244, 0) 65%);
+  animation-delay: -8s;
+  animation-duration: 12s;
+}
+
+/* Clean transparent content panel */
+.app-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 54px 48px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  z-index: 2;
+  background: transparent; /* No dark tint blocking the light rays! */
+}
+
+.brand-header {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(248, 250, 252, 0.54);
+}
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px;
+}
+
+.focus-hub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  text-align: center;
+  padding-top: 98px;
+}
+
+.hero-text {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #f8fafc;
+  max-width: 94vw;
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+.hero-spacer {
+  height: 1px;
+  width: 100%;
+}
+
+.interactive-capsule-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.capsule-form {
+  width: min(90%, 768px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  height: 56px;
+  background: rgba(11, 18, 35, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+  border-radius: 32px;
+  padding: 0 22px;
+  transition: opacity 240ms ease, transform 240ms ease, max-height 240ms ease, visibility 240ms ease;
+}
+
+.input-line input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #f8fafc;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.send-action-btn {
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  border-radius: 999px;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.input-line input::placeholder {
+  color: rgba(226, 232, 240, 0.52);
+}
+
+.send-action-btn:hover,
+.send-action-btn:focus-visible {
+  background: rgba(96, 165, 250, 0.16);
+  transform: translateY(-1px);
+}
+
+.category-line {
+  justify-content: center;
+}
+
+.session-card {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 28px;
+  padding: 28px 30px;
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.24);
+  display: grid;
+  gap: 18px;
+}
+
+.session-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.session-badge,
+.session-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+
+.session-badge {
+  background: rgba(96, 165, 250, 0.12);
+  color: #a5b4fc;
+}
+
+.session-status {
+  background: rgba(34, 197, 94, 0.14);
+  color: #d9f99d;
+  font-weight: 700;
+}
+
+.session-title {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 1.25;
+}
+
+.session-meta {
+  margin: 0;
+  color: rgba(226, 232, 240, 0.6);
+}
+
+.session-timer {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.secondary-button {
+  width: fit-content;
+  padding: 14px 22px;
+  border: 1px solid rgba(226, 232, 240, 0.12);
+  background: transparent;
+  color: #f8fafc;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.secondary-button:hover,
+.secondary-button:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 680px) {
+  .app-container {
+    padding: 28px 20px;
+  }
+
+  .hero-text {
+    font-size: clamp(1.8rem, 7vw, 2.7rem);
+  }
+
+  .input-line {
+    padding: 16px 18px;
+  }
+}
