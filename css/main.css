@@ -1,42 +1,52 @@
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../fonts/Urbanist-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900; 
+  font-style: normal;
+}
+
 :root {
   color-scheme: dark;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  /* FIX 1: Exact matte premium dark void used by Google to make colors pop */
-  background: #080808; 
+  font-family: 'Urbanist', sans-serif;
+  background: #080808; /* Shifted to matte dark void so your SVG/glow pops */
   color: #f8fafc;
 }
-* {
+
+*, *::before, *::after {
   box-sizing: border-box;
+  font-family: 'Urbanist', sans-serif !important;
 }
 
 html,
 body {
   margin: 0;
   min-height: 100%;
-  background: #080808;
+  background: #000000;
+  color: #f8fafc;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400; /* Handles the "rest of the website" requirement */
 }
 
-/* FIX 2: Expanded, ultra-wide viewport layout engine */
 .gemini-ambient-glow-container {
   position: fixed; 
-  top: 42%; /* Positions the epicenter right behind the input box */
+  top: 50%; /* Positions the epicenter right behind the input box */
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw;
-  max-width: 1600px; /* Vast horizontal reach matching image_b78ae4.png */
-  height: 600px;
+  width: 90vw;
+  max-width: 1500px; /* Vast horizontal reach matching image_b78ae4.png */
+  height: 480px;
   pointer-events: none;
   z-index: 1;
   overflow: visible;
   /* Heavy blur creates the natural light-bleed signature */
-  filter: blur(140px); 
-  opacity: 0.38; /* Cranked up saturation threshold */
+  filter: blur(120px); 
+  opacity: 0.50; /* Cranked up saturation threshold */
 }
 
 /* Base style for each light source */
 .glow-pod {
   position: absolute;
-  border-radius: 50%;
+  border-radius: 200%;
   mix-blend-mode: screen; 
   animation: floatAmbient 16s ease-in-out infinite alternate;
 }
@@ -97,12 +107,15 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  font-family: 'Urbanist', sans-serif ;
   font-size: 0.88rem;
   letter-spacing: 0.24em;
-  font-weight: 600;
+  font-weight: 700 ;
   text-transform: uppercase;
   color: rgba(248, 250, 252, 0.54);
+  font-variant-caps: normal;
 }
+
 
 .brand-logo {
   width: 34px;
@@ -127,8 +140,8 @@ body {
   margin: 0;
   font-size: clamp(1.4rem, 2vw, 2.2rem);
   line-height: 1.05;
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  font-weight: 500; 
+  letter-spacing: -0.02em;
   color: #f8fafc;
   max-width: 94vw;
   white-space: nowrap;
@@ -159,7 +172,7 @@ body {
   width: 100%;
   gap: 16px;
   height: 56px;
-  background: rgba(11, 18, 35, 0.96);
+  background: rgba(0, 0, 0, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
   border-radius: 32px;
@@ -179,26 +192,32 @@ body {
 
 .send-action-btn {
   border: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: #e2e8f0;
-  border-radius: 999px;
-  width: 52px;
-  height: 52px;
-  min-width: 52px;
+  background: transparent;
+  color: rgba(226, 232, 240, 0.92);
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 180ms ease, transform 180ms ease;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.send-action-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .input-line input::placeholder {
-  color: rgba(226, 232, 240, 0.52);
+  color: rgba(255, 255, 255, 0.64);
+  font-weight: 400;
 }
 
 .send-action-btn:hover,
 .send-action-btn:focus-visible {
-  background: rgba(96, 165, 250, 0.16);
+  color: rgba(96, 165, 250, 0.92);
   transform: translateY(-1px);
 }
 

@@ -104,8 +104,13 @@ intentForm.addEventListener('submit', async (event) => {
 });
 
 intentInput.addEventListener('input', (event) => {
-  if (event.target.value.trim().length > 0) {
+  const hasText = event.target.value.trim().length > 0;
+  if (hasText) {
     revealCategory();
+  } else {
+    categoryRevealed = false;
+    categoryLine.classList.add('hidden');
+    categoryLine.classList.remove('visible');
   }
 });
 
