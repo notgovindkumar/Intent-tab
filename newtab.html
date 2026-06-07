@@ -55,17 +55,41 @@
         </div>
       </main>
 
+      <div class="google-search-bar">
+        <form class="google-search-form" action="https://www.google.com/search" method="get" target="_blank" role="search">
+          <span class="google-search-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.36 12.27c0-.72-.06-1.41-.17-2.08H12v3.94h6.42c-.28 1.5-1.12 2.77-2.38 3.62v3.02h3.85c2.25-2.07 3.54-5.14 3.54-8.49Z" fill="#4285F4"/>
+              <path d="M12 24c3.24 0 5.96-1.07 7.95-2.9l-3.85-3.02c-1.07.72-2.44 1.14-4.1 1.14-3.14 0-5.8-2.12-6.75-4.97H1.3v3.12C3.26 21.9 7.33 24 12 24Z" fill="#34A853"/>
+              <path d="M5.25 14.25c-.24-.72-.38-1.49-.38-2.25s.14-1.53.38-2.25V6.63H1.3A11.97 11.97 0 0 0 0 12c0 1.95.47 3.79 1.3 5.37l3.95-3.12Z" fill="#FBBC05"/>
+              <path d="M12 4.5c1.8 0 3.42.62 4.7 1.84l3.52-3.52C17.96 1 15.24 0 12 0 7.33 0 3.26 2.1 1.3 5.63l3.95 3.12C6.2 6.62 8.86 4.5 12 4.5Z" fill="#EA4335"/>
+            </svg>
+          </span>
+          <input type="search" name="q" placeholder="Start with a Google Search ..." autocomplete="off" aria-label="Search Google" />
+          <span class="google-mic-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3Z" fill="#8ab4f8"/>
+              <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V22h2v-4.08c3.39-.49 6-3.39 6-6.92h-2Z" fill="#8ab4f8"/>
+            </svg>
+          </span>
+        </form>
+      </div>
+
       <section id="session-card" class="session-card hidden">
-        <div class="session-header">
-          <span class="session-badge" id="session-category"></span>
-          <span class="session-status">Active</span>
+        <div class="session-info-side">
+          <div class="session-header">
+            <span class="session-badge" id="session-category"></span>
+            <span class="session-status">Active</span>
+          </div>
+          <h2 id="session-intent" class="session-title"></h2>
+          <p class="session-meta">Started <span id="session-start"></span></p>
         </div>
-        <h2 id="session-intent" class="session-title"></h2>
-        <p class="session-meta">Started <span id="session-start"></span></p>
-        <p class="session-timer"><strong id="session-timer">00:00:00</strong></p>
-        <button id="stop-button" type="button" class="secondary-button">End Session</button>
+
+        <div class="session-metrics-side">
+          <p class="session-timer"><strong id="session-timer">00:00:00</strong></p>
+          <button id="stop-button" type="button" class="secondary-button">End Session</button>
+        </div>
       </section>
-    </div>
 
     <script src="js/storage.js"></script>
     <script src="js/focus.js"></script>

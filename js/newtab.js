@@ -15,12 +15,21 @@ let activeSession = null;
 let timerId = null;
 let categoryRevealed = false;
 
+const hasText = (input) => input.value.trim().length > 0;
+const toggleCategory = (show) => {
+  categoryRevealed = show;
+  categoryLine.classList.toggle('hidden', !show);
+  categoryLine.classList.toggle('visible', show);
+  updateIntentAccessibility();
+};
+
 async function refreshView() {
   activeSession = await IntentTabStorage.getSession();
-  const sessionActive = activeSession && activeSession.isActive;
+  const sessionActive = Boolean(activeSession?.isActive);
 
   focusHub.classList.toggle('hidden', sessionActive);
   sessionCard.classList.toggle('hidden', !sessionActive);
+  document.body.classList.toggle('session-is-active', sessionActive);
 
   if (sessionActive) {
     sessionIntent.textContent = IntentTabUtils.safeText(activeSession.intent);
@@ -33,20 +42,18 @@ async function refreshView() {
   }
 }
 
-function revealCategory() {
-  if (categoryRevealed) {
-    return;
-  }
+function updateIntentAccessibility() {
+  intentInput.classList.toggle('locked', categoryRevealed && !hasText(categoryInput));
+}
 
-  categoryRevealed = true;
-  categoryLine.classList.remove('hidden');
-  categoryLine.classList.add('visible');
+function revealCategory() {
+  if (!categoryRevealed) {
+    toggleCategory(true);
+  }
 }
 
 function resetForm() {
-  categoryRevealed = false;
-  categoryLine.classList.add('hidden');
-  categoryLine.classList.remove('visible');
+  toggleCategory(false);
   intentForm.reset();
   intentInput.focus();
 }
@@ -103,27 +110,37 @@ intentForm.addEventListener('submit', async (event) => {
   await submitIntent();
 });
 
-intentInput.addEventListener('input', (event) => {
-  const hasText = event.target.value.trim().length > 0;
-  if (hasText) {
+intentInput.addEventListener('input', () => {
+  if (hasText(intentInput)) {
     revealCategory();
   } else {
-    categoryRevealed = false;
-    categoryLine.classList.add('hidden');
-    categoryLine.classList.remove('visible');
+    toggleCategory(false);
   }
 });
 
 intentInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
+  if (!hasText(intentInput)) {
+    return;
+  }
+
+  if (event.key === 'ArrowDown' || event.key === 'Enter') {
     event.preventDefault();
-    if (intentInput.value.trim().length > 0) {
-      revealCategory();
-    }
+    revealCategory();
+    categoryInput.focus();
   }
 });
 
+categoryInput.addEventListener('input', () => {
+  updateIntentAccessibility();
+});
+
 categoryInput.addEventListener('keydown', async (event) => {
+  if (event.key === 'ArrowUp') {
+    event.preventDefault();
+    intentInput.focus();
+    return;
+  }
+
   if (event.key === 'Enter') {
     event.preventDefault();
     await submitIntent();
