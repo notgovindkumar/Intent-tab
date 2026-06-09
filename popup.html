@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intent Tab</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div id="popup-toast-container" class="popup-toast-container"></div>
+
+    <main class="popup-container">
+      <section class="card popup-card">
+        <h2>Intent Tab</h2>
+        <div id="popup-status" class="status-block"></div>
+        <div class="actions compact">
+          <button id="open-new-tab" class="primary-button">Open Intent Tab</button>
+          <button id="end-session" class="secondary-button hidden">End Session</button>
+        </div>
+        <div id="history-summary" class="history hidden">
+          <h3>Recent sessions</h3>
+          <ul id="history-list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/storage.js"></script>
+    <script src="js/focus.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/popup.js"></script>
+  </body>
+</html>
