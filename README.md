@@ -80,3 +80,5 @@ Click the Load unpacked button in the top-left corner.
 Select the root Intent-tab repository folder containing the manifest.json file.
 
 The extension is now live! Pin it to your toolbar for easy access.
+
+some functionalities are under progress, names Floating HUD over tabs for keeping track while in the session and Session History.
